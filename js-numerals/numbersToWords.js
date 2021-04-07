@@ -14,7 +14,21 @@ function doConvert() {
     let num = ('000000000' + numberInput).slice(-9).match(/^(\d{1})(\d{1})(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
     console.log('num', num);
 
-  
+    if (numberInput < 0) {
+        document.querySelector('#numberInput').value = '';
+        return myDiv.innerHTML = 'Please provide a not negative number';
+    } else if (numberInput == '') {
+        document.querySelector('#numberInput').value = '';
+        return myDiv.innerHTML = 'Please provide a number';
+    } else if (!num) {
+        document.querySelector('#numberInput').value = '';
+        return myDiv.innerHTML = 'Please provide a number';
+    } else if (numberInput == 0) {
+
+        return myDiv.innerHTML = 'zero';
+    }
+
+
     let outputText = num[1] != 0 ? (oneToTwenty[Number(num[1])] || `${tenth[num[1][0]]} ${oneToTwenty[num[1][1]]}`) + `${trillion} ` : '';
     outputText += num[2] != 0 ? (oneToTwenty[Number(num[2])] || `${tenth[num[2][0]]} ${oneToTwenty[num[2][1]]}`) + `${billion} ` : '';
     outputText += num[3] != 0 ? (oneToTwenty[Number(num[3])] || `${tenth[num[3][0]]} ${oneToTwenty[num[3][1]]}`) + `${million} ` : '';
