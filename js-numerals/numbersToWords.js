@@ -28,7 +28,24 @@ function doConvert() {
         return myDiv.innerHTML = 'zero';
     }
 
-
+    if(num[1]>1){
+        trillion='trillions';
+        
+    }else{
+        trillion='trillion';
+    }
+    if(num[2]>1){
+        billion='billions';
+        
+    }else{
+        billion='billion';
+    }
+    if(num[3]>1){
+        million='millions';
+        
+    }else{
+        million='million';
+    }
     let outputText = num[1] != 0 ? (oneToTwenty[Number(num[1])] || `${tenth[num[1][0]]} ${oneToTwenty[num[1][1]]}`) + `${trillion} ` : '';
     outputText += num[2] != 0 ? (oneToTwenty[Number(num[2])] || `${tenth[num[2][0]]} ${oneToTwenty[num[2][1]]}`) + `${billion} ` : '';
     outputText += num[3] != 0 ? (oneToTwenty[Number(num[3])] || `${tenth[num[3][0]]} ${oneToTwenty[num[3][1]]}`) + `${million} ` : '';
