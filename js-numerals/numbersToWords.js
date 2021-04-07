@@ -9,10 +9,9 @@ function doConvert() {
     let tenth = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
     if (numberInput.toString().length > 9) return myDiv.innerHTML = 'overlimit';
-    console.log('NumberInput', numberInput);
-
+    
     let num = ('000000000' + numberInput).slice(-9).match(/^(\d{1})(\d{1})(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
-    console.log('num', num);
+    
 
     if (numberInput < 0) {
         document.querySelector('#numberInput').value = '';
