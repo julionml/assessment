@@ -18,10 +18,14 @@ function doConvert() {
         return myDiv.innerHTML = 'Please provide a not negative number';
     } else if (numberInput == '') {
         document.querySelector('#numberInput').value = '';
-        return myDiv.innerHTML = 'Please provide a number';
+        // return myDiv.innerHTML = 'Please provide a number';
+        alert('Please provide a number')
+        return
     } else if (!num) {
         document.querySelector('#numberInput').value = '';
-        return myDiv.innerHTML = 'Please provide a number';
+        //return myDiv.innerHTML = 'Please provide a number';
+        alert('Please provide a number')
+        return
     } else if (numberInput == 0) {
 
         return myDiv.innerHTML = 'zero';
