@@ -26,4 +26,5 @@ That's all.
 
 
 ## To run the test with jest 
-type npm test
+type in the console npm i --save-dev jest to install jest 
+and then type npm test to run the test
