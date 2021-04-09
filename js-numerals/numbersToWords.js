@@ -1,32 +1,53 @@
-function doConvert() {
-    let numberInput = document.querySelector('#numberInput').value;
+self.doConvert = doConvert
+function convert() {
     let myDiv = document.querySelector('#result');
+    let numberInput = document.querySelector('#numberInput').value;
+    let numberToCovert = 0;
+    if (numberInput === '') {
+        alert('Please provide a number')
+        return;
+    } else {
+        numberToCovert = Number(numberInput);
+        myDiv.innerHTML = this.doConvert(numberToCovert)
+
+    }
+
+
+
+
+}
+
+
+function doConvert(number) {
+
+    let myDiv = document.querySelector('#result');
+    let outputText = '';
     let trillion = '';
     let billion = '';
     let million = '';
-    const oneToTwenty = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
+    const array1to20 = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
         'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
-    const tenth = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    const array20to100 = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
-    if (numberInput.toString().length > 9) return myDiv.innerHTML = 'overlimit';
+    if (number.toString().length > 9) return myDiv.innerHTML = 'overlimit';
 
-    let num = ('000000000' + numberInput).slice(-9).match(/^(\d{1})(\d{1})(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
+    let num = ('000000000' + number).slice(-9).match(/^(\d{1})(\d{1})(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
 
 
-    if (numberInput < 0) {
+    if (number < 0) {
         document.querySelector('#numberInput').value = '';
         return myDiv.innerHTML = 'Please provide a not negative number';
-    } else if (numberInput == '') {
+    } else if (number === '') {
         document.querySelector('#numberInput').value = '';
-       
+
         alert('Please provide a number')
         return
     } else if (!num) {
         document.querySelector('#numberInput').value = '';
-       
+
         alert('Please provide a number')
         return
-    } else if (numberInput == 0) {
+    } else if (number === 0) {
 
         return myDiv.innerHTML = 'zero';
     }
@@ -37,7 +58,7 @@ function doConvert() {
     } else {
         trillion = 'trillion';
     }
-    
+
     if (num[2] > 1) {
         billion = 'billions';
 
@@ -51,15 +72,33 @@ function doConvert() {
     } else {
         million = 'million';
     }
+    if (num[1] != 0) {
+        outputText = (array1to20[Number(num[1])] || `${array20to100[num[1][0]]} ${array1to20[num[1][1]]}`) + `${trillion} `
+    }
+    if (num[2] != 0) {
+        outputText += (array1to20[Number(num[2])] || `${array20to100[num[2][0]]} ${array1to20[num[2][1]]}`) + `${billion} `
+    }
+    if (num[3] != 0) {
+        outputText += (array1to20[Number(num[3])] || `${array20to100[num[3][0]]} ${array1to20[num[3][1]]}`) + `${million} `
+    }
+    if (num[4] != 0) {
+        outputText += (array1to20[Number(num[4])] || `${array20to100[num[4][0]]} ${array1to20[num[4][1]]}`) + 'hundred '
+    }
+    if (num[5] != 0) {
+        outputText += (array1to20[Number(num[5])] || `${array20to100[num[5][0]]} ${array1to20[num[5][1]]}`) + ' thousand '
+    }
+    if (num[6] != 0) {
+        outputText += (array1to20[Number(num[6])] || `${array20to100[num[6][0]]} ${array1to20[num[6][1]]}`) + 'hundred '
+    }
+    if (num[7] != 0) {
 
-    let outputText = num[1] != 0 ? (oneToTwenty[Number(num[1])] || `${tenth[num[1][0]]} ${oneToTwenty[num[1][1]]}`) + `${trillion} ` : '';
-    outputText += num[2] != 0 ? (oneToTwenty[Number(num[2])] || `${tenth[num[2][0]]} ${oneToTwenty[num[2][1]]}`) + `${billion} ` : '';
-    outputText += num[3] != 0 ? (oneToTwenty[Number(num[3])] || `${tenth[num[3][0]]} ${oneToTwenty[num[3][1]]}`) + `${million} ` : '';
+        outputText += (array1to20[Number(num[7])] || `${array20to100[num[7][0]]} ${array1to20[num[7][1]]} `)
 
-    outputText += num[4] != 0 ? (oneToTwenty[Number(num[4])] || `${tenth[num[4][0]]} ${oneToTwenty[num[4][1]]}`) + 'hundred ' : '';
-    outputText += num[5] != 0 ? (oneToTwenty[Number(num[5])] || `${tenth[num[5][0]]} ${oneToTwenty[num[5][1]]}`) + ' thousand ' : '';
-    outputText += num[6] != 0 ? (oneToTwenty[Number(num[6])] || `${tenth[num[6][0]]} ${oneToTwenty[num[6][1]]}`) + 'hundred ' : '';
-    outputText += num[7] != 0 ? (oneToTwenty[Number(num[7])] || `${tenth[num[7][0]]} ${oneToTwenty[num[7][1]]} `) : '';
+        console.log(array1to20[Number(num[7][1])])
 
-    myDiv.innerHTML = outputText;
+    }
+
+
+    return outputText;
 }
+

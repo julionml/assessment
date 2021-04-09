@@ -5,6 +5,7 @@
 	<meta name="author" content="Yinka Enoch Adedokun">
     <link rel="stylesheet" href="style.css">
     <script src="numbersToWords.js"></script>
+    <script src="testNumbersToWords.js"></script>
 	<title>Numbers to Words</title>
 </head>
 <body>
@@ -24,11 +25,19 @@
             </form>
             <div  >
                     
-                <button type="submit" class="btn" onclick="doConvert()">Convert to text</button>
+                <button type="submit" class="btn" onclick="convert()">Convert to text</button>
+            </div>
+            <div  >
+                    
+                <button type="submit" class="btn" onclick="testConvert()">Test Convertion</button>
             </div>
         </div>
         
 	</div>
-	<!-- Footer -->
+	<div>
+        <textarea id="testResult">
+
+        </textarea>
+    </div>
 	
 </body>
