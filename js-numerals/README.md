@@ -25,4 +25,5 @@ For example:
 That's all.
 
 
-## To run the test with je
+## To run the test with jest 
+type npm test
