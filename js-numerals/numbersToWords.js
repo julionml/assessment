@@ -1,10 +1,19 @@
+//to do the unit test in a different file
 self.doConvert = doConvert
+//
 function convert() {
     let myDiv = document.querySelector('#result');
     let numberInput = document.querySelector('#numberInput').value;
     let numberToCovert = 0;
+    if (numberInput < 0) {
+        document.querySelector('#numberInput').value = '';
+        alert('Please provide a not negative number')
+        return
+    }
+
     if (numberInput === '') {
         alert('Please provide a number')
+        myDiv.innerHTML = ''
         return;
     } else {
         numberToCovert = Number(numberInput);
@@ -34,10 +43,7 @@ function doConvert(number) {
     let num = ('000000000' + number).slice(-9).match(/^(\d{1})(\d{1})(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
 
 
-    if (number < 0) {
-        document.querySelector('#numberInput').value = '';
-        return myDiv.innerHTML = 'Please provide a not negative number';
-    } else if (number === '') {
+     if (number === '') {
         document.querySelector('#numberInput').value = '';
 
         alert('Please provide a number')
@@ -94,7 +100,7 @@ function doConvert(number) {
 
         outputText += (array1to20[Number(num[7])] || `${array20to100[num[7][0]]} ${array1to20[num[7][1]]} `)
 
-        console.log(array1to20[Number(num[7][1])])
+
 
     }
 
