@@ -105,7 +105,7 @@ function doConvert(number) {
 
 
     }
-
+outputText=outputText.trimEnd()
 
     return outputText;
 }
